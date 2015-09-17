@@ -17,7 +17,7 @@ Available on NPM and bower under name `iframe-api`.
 **external website** (index.html)
 
 ```html
-<script src="iframe-api/dist/external-api.js"></script>
+<script src="iframe-api/dist/iframe-api.js"></script>
 <script>
 var myMethods = {
   foo: function (arg) {
@@ -90,8 +90,8 @@ var myApi = {
 
 * options - optional object with the following properties
   - `debug | verbose` prints console messages during handshake
-  - `md5` 
-    + if `true` this side will compute md5 checksum of the 
+  - `md5`
+    + if `true` this side will compute md5 checksum of the
     received source and compare to declared before reviving api object.
     + if a string, takes it as the md5 checksum to be compared against computed.
 

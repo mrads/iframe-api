@@ -1200,13 +1200,13 @@ var iframeApi = function iframeApi(myApi, userOptions) {
   return new Promise(function (resolve, reject) {
 
     function handshakeEnvelope(envelope, port) {
-      console.log('handshake envelope with caller', JSON.stringify(envelope));
+      log('handshake envelope with caller', JSON.stringify(envelope));
 
       if (!isIframed()) {
         log('responding to handshake from iframe');
         var letter = selfAddressed(envelope);
         if (letter) {
-          console.log('iframe hadnshake options', JSON.stringify(letter));
+          log('iframe hadnshake options', JSON.stringify(letter));
         }
         selfAddressed(envelope, params.options);
         selfAddressed(apiMethods.post, port, envelope);
@@ -1224,7 +1224,7 @@ var iframeApi = function iframeApi(myApi, userOptions) {
 
     function respondToMail(envelope, port) {
       var letter = selfAddressed(envelope);
-      console.log('responding to letter', JSON.stringify(letter));
+      log('responding to letter', JSON.stringify(letter));
       var result = callApiMethod(letter);
       if (isPromise(result)) {
         result.then(function (value) {
@@ -1289,7 +1289,7 @@ var iframeApi = function iframeApi(myApi, userOptions) {
       apiMethods.handshake(parent, params.options)
         .then(function (optionsFromOtherSide) {
           var api = typeof params.myApi === 'function' ? params.myApi(optionsFromOtherSide) : params.myApi;
-          console.log('has received handshake options', JSON.stringify(optionsFromOtherSide));
+          log('has received handshake options', JSON.stringify(optionsFromOtherSide));
           apiMethods.send(api, parent, params.options);
         });
     }
